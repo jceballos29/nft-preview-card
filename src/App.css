@@ -1,38 +1,138 @@
 .App {
-  text-align: center;
+    width: 320px;
+    height: 560px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--card-bg);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.2fr 0.8fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "card__image"
+        "card__information";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card__image {
+    justify-self: center;
+    align-self: end;
+    grid-area: card__image;
+    width: 290px;
+    height: 290px;
+    border-radius: 10px;
+    position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card__image img {
+    width: 290px;
+    height: 290px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card__image__cover {
+    width: 290px;
+    height: 290px;
+    background-color: var(--cyan-opacity);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all ease-in;
+}
+
+.card__image__cover img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.4s all ease-in;
+}
+
+.card__image__cover img:hover {
+    transform: scale(1.2);
+}
+
+.App:hover .card__image__cover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card__information {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.5fr 0.5fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "card__information__content"
+        "card__information__footer";
+    justify-self: center;
+    grid-area: card__information;
+    width: 290px;
+    height: 245px;
+}
+
+.card__information__content {
+    grid-area: card__information__content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.App:hover .card__information__content > h1 {
+  color: var(--cyan);
+}
+.card__information__content_footer {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.card__information__content_footer span {
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card__information__content_footer span > img {
+  margin-right: 0.6ch;
+}
+
+.cryptocurrency {
+  color: var(--cyan);
+}
+
+.time_left {
+  color: var(--soft-blue);
+}
+
+.card__information__footer {
+    grid-area: card__information__footer;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+}
+
+.card__information__footer img {
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  margin-right: 2ch;
+}
+
+.card__information__footer span {
+  color: var(--white);
+}
+
+.App:hover .card__information__footer span {
+  color: var(--cyan);
 }
